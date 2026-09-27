@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_header">Meus Desejos</string>
+    <string name="wishlist_title">Minha Wishlist</string>
+    <string name="item_count">%1$d itens</string>
+    <string name="filter_all">Todos</string>
+    <string name="add_item">Adicionar item</string>
+    <string name="product_image">Imagem do produto</string>
+    <string name="open_details">Abrir detalhes</string>
+    <string name="product_details_title">Detalhes do Item</string>
+    <string name="back">Voltar</string>
+    <string name="favorite">Favorito</string>
+    <string name="store">Loja</string>
+    <string name="store_label">Loja: %1$s</string>
+    <string name="wish_status">Status do Desejo</string>
+    <string name="mark_as_purchased">Marcar como Comprado</string>
+    <string name="already_purchased">Comprado ✓</string>
+</resources>
