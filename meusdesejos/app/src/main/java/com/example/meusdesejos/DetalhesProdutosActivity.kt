@@ -13,18 +13,14 @@ import com.example.meusdesejos.databinding.BadgePillLayoutBinding
 import java.text.NumberFormat
 import java.util.Locale
 
-// Tela 2: mostra os detalhes do produto escolhido na Tela 1
-class DetalhesProdutosActivity : AppCompatActivity() {
 
-    // chave usada para levar o id do produto de uma tela para a outra
+class DetalhesProdutosActivity : AppCompatActivity() {
     companion object {
         const val PRODUCT_ID_KEY = "product_id"
     }
 
     private lateinit var binding: ActivityProductDetailBinding
 
-    // guarda o produto atual; é "var" porque pode ser trocado por uma cópia
-    // atualizada quando o usuário marcar como comprado (o data class continua imutável)
     private lateinit var currentItem: WishlistItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,19 +30,14 @@ class DetalhesProdutosActivity : AppCompatActivity() {
         binding = ActivityProductDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // recupera o id que veio da Tela 1 através da Intent
         val productId = intent.getStringExtra(PRODUCT_ID_KEY)
 
-        // procura o produto correspondente na lista mock
-        // se por algum motivo não achar, usa o primeiro item como segurança
         currentItem = wishlistMock.find { it.id == productId } ?: wishlistMock.first()
 
-        // botão de voltar simplesmente fecha esta tela e retorna para a Tela 1
         binding.backButton.setOnClickListener {
             finish()
         }
 
-        // interação principal da tela: ao clicar, atualiza os dados e redesenha a tela
         binding.markAsPurchasedButton.setOnClickListener {
             currentItem = currentItem.copy(purchased = true)
             renderProduct()
@@ -55,15 +46,14 @@ class DetalhesProdutosActivity : AppCompatActivity() {
         renderProduct()
     }
 
-    // lê os dados de "currentItem" e escreve/atualiza as views da tela
     private fun renderProduct() {
         val currencyFormat = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
 
         binding.productName.text = currentItem.nome
         binding.productStore.text = getString(R.string.store_label, currentItem.loja)
         binding.currentPrice.text = currencyFormat.format(currentItem.preço)
+        binding.productImage.setImageResource(currentItem.imageRes)
 
-        // "details" é opcional (String?): só mostramos a View se o valor existir
         if (currentItem.detalhes != null) {
             binding.productDetails.text = currentItem.detalhes
             binding.productDetails.visibility = View.VISIBLE
@@ -71,7 +61,6 @@ class DetalhesProdutosActivity : AppCompatActivity() {
             binding.productDetails.visibility = View.GONE
         }
 
-        // "oldPrice" é opcional (Double?): só mostramos o preço riscado se ele existir
         if (currentItem.preçoantigo != null) {
             binding.oldPrice.text = currencyFormat.format(currentItem.preçoantigo)
             binding.oldPrice.paintFlags = binding.oldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -80,7 +69,6 @@ class DetalhesProdutosActivity : AppCompatActivity() {
             binding.oldPrice.visibility = View.GONE
         }
 
-        // "availability" é opcional (String?): escondemos o card inteiro se não existir
         if (currentItem.disponivel != null) {
             binding.availability.text = currentItem.disponivel
             binding.availabilityCard.visibility = View.VISIBLE
@@ -88,7 +76,6 @@ class DetalhesProdutosActivity : AppCompatActivity() {
             binding.availabilityCard.visibility = View.GONE
         }
 
-        // selo de prioridade alta -> só aparece quando highPriority = true
         binding.priorityBadgeContainer.removeAllViews()
         if (currentItem.prioridade) {
             addBadge(
@@ -99,7 +86,6 @@ class DetalhesProdutosActivity : AppCompatActivity() {
             )
         }
 
-        // selo de status (Pendente / Comprado) + texto do botão, de acordo com "purchased"
         binding.statusBadgeContainer.removeAllViews()
         if (currentItem.purchased) {
             addBadge(binding.statusBadgeContainer, "✓ COMPRADO", R.color.green_light, R.color.green_dark)
@@ -112,8 +98,6 @@ class DetalhesProdutosActivity : AppCompatActivity() {
         }
     }
 
-    // Cria uma view a partir do componente reutilizável "badge_pill_layout.xml"
-    // e adiciona dentro do container recebido. Isso evita repetir o mesmo XML várias vezes.
     private fun addBadge(
         container: LinearLayout,
         text: String,

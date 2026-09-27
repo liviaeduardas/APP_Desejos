@@ -12,12 +12,14 @@
 
     <!-- "Foto" do produto (aqui é só um ícone, sem internet/API) -->
     <ImageView
+        android:id="@+id/item_image"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginEnd="12dp"
-        android:background="@drawable/pill_pink_light"
+        android:background="@drawable/card_white_rounded"
+        android:clipToOutline="true"
         android:contentDescription="@string/product_image"
-        android:padding="16dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_product_placeholder" />
 
     <!-- Coluna com nome, loja e preço -->

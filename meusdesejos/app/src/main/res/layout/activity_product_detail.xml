@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Tela 2: detalhes do produto escolhido na Tela 1 -->
-<!-- ScrollView garante que a tela role caso o conteúdo não caiba -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,7 +16,6 @@
         android:orientation="vertical"
         android:paddingBottom="24dp">
 
-        <!-- Barra de topo: voltar / título / favorito -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,14 +53,15 @@
 
         <!-- "Foto" do produto -->
         <ImageView
+            android:id="@+id/product_image"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/pill_pink_light"
+            android:background="@drawable/card_white_rounded"
+            android:clipToOutline="true"
             android:contentDescription="@string/product_image"
-            android:padding="60dp"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_product_placeholder" />
 
         <!-- Card com nome, selo de prioridade e preço -->
