@@ -23,7 +23,7 @@ Conexão com a internet na primeira execução para baixar as ferramentas e bibl
 Emulador Android Pixel 10 Pro ou outro dispositivo compatível.
 
 ### Passo a passo
-1. Baixe o projeto usando o comando `git clone <LINK-DO-REPOSITORIO>`.
+1. Baixe o projeto usando o comando `[git clone <LINK-DO-REPOSITORIO>](https://github.com/liviaeduardas/APP_Desejos.git)`.
 2. Abra o Android Studio e selecione **File > Open** para abrir a pasta do projeto.
 3. Aguarde o Android Studio preparar o projeto e baixar os componentes necessários.
 4. Se aparecer uma solicitação para instalar algum componente, clique em **Install/Accept**.
