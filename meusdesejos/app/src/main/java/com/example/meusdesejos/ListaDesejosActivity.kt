@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.graphics.Paint
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
+import androidx.core.content.ContextCompat
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -132,27 +135,41 @@ class WishlistAdapter(private val items: List<WishlistItem>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         val currencyFormat = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
+        val b = holder.itemBinding
 
-        holder.itemBinding.itemName.text = item.nome
-        holder.itemBinding.itemStore.text = item.loja
-        holder.itemBinding.itemPrice.text = currencyFormat.format(item.preço)
-        holder.itemBinding.itemImage.setImageResource(item.imageRes)
+        b.itemName.text = item.nome
+        b.itemStore.text = item.loja
+        b.itemPrice.text = currencyFormat.format(item.preço)
+        b.itemImage.setImageResource(item.imageRes)
 
         if (item.purchased) {
-            holder.itemBinding.itemName.paintFlags =
-                holder.itemBinding.itemName.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            b.itemName.paintFlags = b.itemName.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+
+            val matrix = ColorMatrix()
+            matrix.setSaturation(0f)
+            b.itemImage.colorFilter = ColorMatrixColorFilter(matrix)
+
+            val gray = ContextCompat.getColor(holder.context, R.color.gray_dark)
+            b.itemName.setTextColor(gray)
+            b.itemStore.setTextColor(gray)
+            b.itemPrice.setTextColor(gray)
+
+            b.root.alpha = 0.6f
         } else {
-            holder.itemBinding.itemName.paintFlags =
-                holder.itemBinding.itemName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            b.itemName.paintFlags = b.itemName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            b.itemImage.clearColorFilter()
+            b.itemName.setTextColor(ContextCompat.getColor(holder.context, R.color.text_primary))
+            b.itemStore.setTextColor(ContextCompat.getColor(holder.context, R.color.text_secondary))
+            b.itemPrice.setTextColor(ContextCompat.getColor(holder.context, R.color.pink_dark))
+            b.root.alpha = 1f
         }
 
-        holder.itemBinding.root.setOnClickListener {
+        b.root.setOnClickListener {
             val intent = Intent(holder.context, DetalhesProdutosActivity::class.java)
             intent.putExtra(DetalhesProdutosActivity.PRODUCT_ID_KEY, item.id)
             holder.context.startActivity(intent)
         }
     }
-
     override fun getItemCount(): Int = items.size
 }
 
