@@ -2,7 +2,6 @@
     <string name="app_header">Meus Desejos</string>
     <string name="wishlist_title">Minha Wishlist</string>
     <string name="item_count">%1$d itens</string>
-    <string name="filter_all">Todos</string>
     <string name="add_item">Adicionar item</string>
     <string name="product_image">Imagem do produto</string>
     <string name="open_details">Abrir detalhes</string>
