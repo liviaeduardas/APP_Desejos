@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Card de um item da lista de desejos -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,7 +9,6 @@
     android:orientation="horizontal"
     android:padding="12dp">
 
-    <!-- "Foto" do produto (aqui é só um ícone, sem internet/API) -->
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="64dp"
@@ -22,7 +20,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_product_placeholder" />
 
-    <!-- Coluna com nome, loja e preço -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -54,7 +51,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Setinha indicando que dá pra clicar -->
     <ImageView
         android:layout_width="32dp"
         android:layout_height="32dp"

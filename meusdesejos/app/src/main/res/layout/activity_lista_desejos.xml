@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Tela 1: mostra a lista de produtos desejados -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +11,6 @@
     android:orientation="vertical"
     tools:context=".WishlistActivity">
 
-    <!-- Barra de topo com o coraçãozinho -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +34,7 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <!-- Título "Minha Wishlist" + contador de itens -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,11 +47,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/wishlist_title"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/pink_dark"
             android:textSize="26sp"
             android:textStyle="bold" />
 
-        <!-- este texto é preenchido pelo Kotlin com a quantidade real de itens -->
         <TextView
             android:id="@+id/item_count"
             android:layout_width="wrap_content"
@@ -62,25 +59,10 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <!-- Space só empurra o conteúdo, sem precisar de margin -->
     <Space
         android:layout_width="match_parent"
         android:layout_height="12dp" />
 
-    <!-- Filtro (aqui é só visual, não precisa de lógica) -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/pill_pink_solid"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="8dp"
-        android:text="@string/filter_all"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
-
-    <!-- FrameLayout empilha a lista embaixo do botão flutuante (+) -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

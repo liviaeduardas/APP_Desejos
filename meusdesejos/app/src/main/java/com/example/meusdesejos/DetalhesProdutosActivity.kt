@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.meusdesejos.databinding.ActivityProductDetailBinding
+import com.example.meusdesejos.databinding.ActivityDetalhesProdutosBinding
 import com.example.meusdesejos.databinding.BadgePillLayoutBinding
 import java.text.NumberFormat
 import java.util.Locale
@@ -19,7 +19,7 @@ class DetalhesProdutosActivity : AppCompatActivity() {
         const val PRODUCT_ID_KEY = "product_id"
     }
 
-    private lateinit var binding: ActivityProductDetailBinding
+    private lateinit var binding: ActivityDetalhesProdutosBinding
 
     private lateinit var currentItem: WishlistItem
 
@@ -27,7 +27,7 @@ class DetalhesProdutosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityProductDetailBinding.inflate(layoutInflater)
+        binding = ActivityDetalhesProdutosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val productId = intent.getStringExtra(PRODUCT_ID_KEY)
@@ -40,6 +40,11 @@ class DetalhesProdutosActivity : AppCompatActivity() {
 
         binding.markAsPurchasedButton.setOnClickListener {
             currentItem = currentItem.copy(purchased = true)
+
+            val index = wishlistMock.indexOfFirst { it.id == currentItem.id }
+            if (index != -1) {
+                wishlistMock[index] = currentItem
+            }
             renderProduct()
         }
 

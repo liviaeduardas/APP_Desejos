@@ -51,7 +51,7 @@
                 android:src="@drawable/ic_heart_filled" />
         </LinearLayout>
 
-        <!-- "Foto" do produto -->
+
         <ImageView
             android:id="@+id/product_image"
             android:layout_width="match_parent"
@@ -64,7 +64,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_product_placeholder" />
 
-        <!-- Card com nome, selo de prioridade e preço -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- aqui o Kotlin infla o componente reutilizável badge_pill_layout -->
+
             <LinearLayout
                 android:id="@+id/priority_badge_container"
                 android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <!-- "details" é opcional (String?): fica escondido se o produto não tiver -->
+
             <TextView
                 android:id="@+id/product_details"
                 android:layout_width="match_parent"
@@ -123,7 +123,6 @@
                     android:layout_width="8dp"
                     android:layout_height="wrap_content" />
 
-                <!-- "oldPrice" é opcional (Double?): só aparece riscado se existir -->
                 <TextView
                     android:id="@+id/old_price"
                     android:layout_width="wrap_content"
@@ -135,7 +134,7 @@
 
         </LinearLayout>
 
-        <!-- Card de loja/disponibilidade: só aparece se "availability" não for nulo -->
+
         <LinearLayout
             android:id="@+id/availability_card"
             android:layout_width="match_parent"
@@ -178,7 +177,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Card de status: mostra o selo Pendente/Comprado e o botão de ação -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -202,7 +201,6 @@
                     android:textColor="@color/text_primary"
                     android:textStyle="bold" />
 
-                <!-- selo Pendente/Comprado, também usa o componente reutilizável -->
                 <LinearLayout
                     android:id="@+id/status_badge_container"
                     android:layout_width="wrap_content"
@@ -210,7 +208,6 @@
                     android:orientation="horizontal" />
             </LinearLayout>
 
-            <!-- ao clicar, atualiza o status na tela (interação obrigatória) -->
             <Button
                 android:id="@+id/mark_as_purchased_button"
                 android:layout_width="match_parent"
