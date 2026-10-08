@@ -30,7 +30,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    // ADICIONE ESTE BLOCO -> liga o ViewBinding no projeto
     buildFeatures {
         viewBinding = true
     }
@@ -42,8 +41,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
-
-    // ADICIONE ESTA LINHA -> dependência do RecyclerView (usado na Tela 1)
+    
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     testImplementation(libs.junit)
