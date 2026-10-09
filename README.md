@@ -29,7 +29,7 @@ Emulador Android Pixel 10 Pro ou outro dispositivo compatível.
 3. Aguarde o Android Studio preparar o projeto e baixar os componentes necessários.
 4. Se aparecer uma solicitação para instalar algum componente, clique em **Install/Accept**.
 5. Crie ou selecione um emulador em **Tools > Device Manager**.
-6. Clique em **Run ▶** para executar o aplicativo.
+6. Clique em **Run** para executar o aplicativo.
 A primeira tela exibida será a Lista de Desejos.
 
 ## Bibliotecas utilizadas
